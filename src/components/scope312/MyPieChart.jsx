@@ -1,21 +1,29 @@
+
 import {
   Pie,
   PieChart,
   Sector,
+  Tooltip,
   useActiveTooltipDataPoints,
   useIsTooltipActive,
 } from "recharts";
 
-const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
+const COLORS = [
+  "#0088FE",
+  "#00C49F",
+  "#FFBB28",
+  "#FF8042",
+  "#A28BFE",
+  "#FF6699",
+  "#66CCCC",
+  "#99CC33",
 ];
 
-const RADIAN = Math.PI / 180;
+function getColor(index) {
+  return COLORS[index % COLORS.length];
+}
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const RADIAN = Math.PI / 180;
 
 const renderCustomizedLabel = ({
   cx,
@@ -53,30 +61,25 @@ const renderCustomizedLabel = ({
       textAnchor={x > Number(cx) ? "start" : "end"}
       dominantBaseline="central"
     >
-      {`${((percent ?? 1) * 100).toFixed(0)}%`}
+      {`${((percent ?? 0) * 100).toFixed(0)}%`}
     </text>
   );
 };
 
 const MyCustomPie = (props) => {
-  const p = useActiveTooltipDataPoints();
-  const isAnyPieActive = useIsTooltipActive();
+  const activePoints = useActiveTooltipDataPoints();
+  const isTooltipActive = useIsTooltipActive();
 
   const isThisPieActive =
-    isAnyPieActive && props.payload === p?.[0];
+    isTooltipActive && props.payload === activePoints?.[0];
 
-  let fillOpacity;
-
-  if (isAnyPieActive && !isThisPieActive) {
-    fillOpacity = 0.5;
-  } else {
-    fillOpacity = 1;
-  }
+  const fillOpacity =
+    isTooltipActive && !isThisPieActive ? 0.5 : 1;
 
   return (
     <Sector
       {...props}
-      fill={COLORS[props.index % COLORS.length]}
+      fill={getColor(props.index)}
       stroke="none"
       fillOpacity={fillOpacity}
       style={{ transition: "fill-opacity 0.3s ease" }}
@@ -84,16 +87,29 @@ const MyCustomPie = (props) => {
   );
 };
 
-
-function MyPieChart(){
+// Återanvändbar komponent som tar emot data via props.
+function MyPieChart({
+  data,
+  unit = "kg",
+  width = 400,
+  height = 400,
+}) {
   return (
-    <PieChart width={400} height={400}>
+    <PieChart width={width} height={height}>
       <Pie
         data={data}
+        nameKey="name"
+        dataKey="value"
         labelLine={false}
         label={renderCustomizedLabel}
-        dataKey="value"
         shape={MyCustomPie}
+      />
+
+      <Tooltip
+        formatter={(value, name) => [
+          `${value} ${unit}`,
+          name,
+        ]}
       />
     </PieChart>
   );

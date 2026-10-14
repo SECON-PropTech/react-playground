@@ -43,15 +43,199 @@
 
 
 
-  "3.11" :
+  
+  
+    "3.11" :{
+      "name": "Användning av sålda produkter",
+      "unit": "kWh",
+      "period": { "from": "2025-01-01", "to": "2025-12-31" },
+      "products" : [
+       { 
+         "id": 1,
+         "name": "UV-lampor",
+         "quantity": 15,
+         "lifetimeYears": 1,
+         "consumptionPerYear": 5641
+       },
+       {
+         "id": 2,
+         "name": "DCW",
+         "quantity": 9,
+         "lifetimeYears": 10,
+         "consumptionPerYear": 713
+       },
+       {
+         "id": 3,
+         "name": "Fläktar/pumpar",
+         "quantity": 25,
+         "lifetimeYears": 15,
+         "consumptionPerYear": 1645
+       },
+       {
+         "id": 4,
+         "name": "SECON Lagur",
+         "quantity": 20,
+         "lifetimeYears": 10,
+         "consumptionPerYear": 114
+       },
+       {
+         "id": 5,
+         "name": "DUC",
+         "quantity": 10,
+         "lifetimeYears": 15,
+         "consumptionPerYear": 175
+       }
+     ]
+    },
+  
+
+  "3.12" :
   {
-
-  },
-
-
-
-  "3.12":
-  {
+    "name": "Slutbehandling av sålda produkter",
+    "sold product": [
+      {
+        "id": 1,
+        "name": "Ventilationsaggregat",
+        "quantity": 2,
+        "materials": [
+          { "name": "Stål", "kg": 40 },
+          { "name": "Aluminium", "kg": 10 },
+          { "name": "Plast", "kg": 5 }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Värmepump luft-vatten",
+        "quantity": 3,
+        "materials": [
+          { "name": "Stål", "kg": 50 },
+          { "name": "Koppar", "kg": 12 },
+          { "name": "Aluminium", "kg": 8 },
+          { "name": "Plast", "kg": 4 }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Ventilationskanaler",
+        "quantity": 10,
+        "materials": [
+          { "name": "Galvaniserat stål", "kg": 4 }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Vattenburen radiator",
+        "quantity": 8,
+        "materials": [
+          { "name": "Stål", "kg": 15 },
+          { "name": "Plast", "kg": 1 }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Frånluftsfläkt",
+        "quantity": 5,
+        "materials": [
+          { "name": "Stål", "kg": 6 },
+          { "name": "Aluminium", "kg": 3 },
+          { "name": "Plast", "kg": 2 }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Värmeväxlare",
+        "quantity": 4,
+        "materials": [
+          { "name": "Aluminium", "kg": 18 },
+          { "name": "Koppar", "kg": 10 },
+          { "name": "Stål", "kg": 4 }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Cirkulationspump",
+        "quantity": 6,
+        "materials": [
+          { "name": "Gjutjärn", "kg": 4 },
+          { "name": "Rostfritt stål", "kg": 2 },
+          { "name": "Plast", "kg": 1 }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Luftfilter för ventilationssystem",
+        "quantity": 20,
+        "materials": [
+          { "name": "Plast", "kg": 0.5 },
+          { "name": "Syntetfiber", "kg": 0.8 },
+          { "name": "Stål", "kg": 0.2 }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Expansionskärl",
+        "quantity": 4,
+        "materials": [
+          { "name": "Stål", "kg": 10 },
+          { "name": "Gummi", "kg": 2 }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Isolerade kopparrör",
+        "quantity": 12,
+        "materials": [
+          { "name": "Koppar", "kg": 2 },
+          { "name": "Stål", "kg": 0.5 }
+        ]
+      }
+    ],
+    "environmentalFacts": [
+      {
+      "id": 1,
+      "fact": "Stål kan återvinnas många gånger utan att förlora särskilt mycket av sina egenskaper.",
+      "icon": "recycle"
+      },
+      {
+      "id": 2,
+      "fact": "Återvinning av aluminium kräver betydligt mindre energi än att framställa nytt aluminium från malm.",
+      "icon": "zap"
+      },
+      {
+      "id": 3,
+      "fact": "Koppar är en värdefull metall som kan återvinnas och användas på nytt i exempelvis rör och elektriska komponenter.",
+      "icon": "refresh-cw"
+      },
+      {
+      "id": 4,
+      "fact": "Olika plastsorter behöver ofta sorteras separat eftersom de inte alltid kan återvinnas tillsammans.",
+      "icon": "recycle"
+      },
+      {
+      "id": 5,
+      "fact": "Produkter som är enkla att demontera kan göra det lättare att reparera, sortera och återvinna material.",
+      "icon": "wrench"
+      },
+      {
+      "id": 6,
+      "fact": "Att förlänga en produkts livslängd kan minska behovet av nya råmaterial och nytillverkning.",
+      "icon": "leaf"
+      },
+      {
+      "id": 7,
+      "fact": "Produktens miljöpåverkan beror inte bara på materialet, utan även på tillverkning, transporter, användning och vad som händer när produkten blir avfall.",
+      "icon": "globe"
+      },
+      {
+      "id": 8,
+      "fact": "Att återanvända en fungerande komponent kan ibland spara mer resurser än att återvinna materialet direkt.",
+      "icon": "refresh-cw"
+      }
+      ]
 
   }
+
+
+
+
 }
