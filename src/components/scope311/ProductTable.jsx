@@ -5,6 +5,8 @@ function ProductTable({rows, total, unit}){
         <div>
             <h3> Sålda produkter</h3>
             <p>
+                {/*unit = kwh
+                    */}
                 {rows.length} produkter, {unit} per enhet
             </p>
 
@@ -31,8 +33,10 @@ function ProductTable({rows, total, unit}){
                         <td>{formatNumber(row.consumptionPerYear)}</td>
                         <td>{formatNumber(row.activity)}</td>
                         <td>
-                        {/* Small bar. the width is the share as a percentage. insert below*/}
-
+                        {/* Small bar. the width is the share as a percentage*/}
+                            <div className="progress">
+                                <div className="progress-bar" style={{width:row.share + "%"}}></div>
+                            </div>
                             {formatPercent(row.share)}%
                         </td>
                     </tr>
