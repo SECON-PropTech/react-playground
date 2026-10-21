@@ -15,13 +15,13 @@ function Scope312({ onSelectMaterial, onSelect }) {
   return (
     <div>
       <h2>Scope 3.12</h2>
-      <h3>Användning av sålda produkter</h3>
-      <div class="container text-center">
-        <div class="row row-cols-2">
-          <div class="col">
+      <h3>Slutbehandling av sålda produkter</h3>
+      <div className="container text-center">
+        <div className="row row-cols-2">
+          <div className="col">
             <MyTable onSelectMaterial={onSelectMaterial}/>
           </div>
-          <div class="col">
+          <div className="col">
             <PieChart data={chartData} unit="kg" />
             <button
               type="button"
