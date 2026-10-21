@@ -1,7 +1,7 @@
 import { getTopWasteProducts } from "../../utils/materialCalculations";
 import MyPieChart from "./MyPieChart";
 
-function TopTen() {
+function TopTen({onBack}) {
 
   const products = getTopWasteProducts(10);
 
@@ -13,6 +13,12 @@ function TopTen() {
 
   return (
     <div>
+      <button
+          type="button"
+          className="btn btn-outline-secondary mb-3"
+          onClick={onBack}>
+          ← Tillbaka
+      </button>
       <h2>Top 10 produkter med högst materialvikt</h2>
 
       <div className="container">

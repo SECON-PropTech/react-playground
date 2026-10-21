@@ -1,6 +1,6 @@
 import { getMaterialTotals } from "../../utils/materialCalculations";
 
-function MyTable({onSelectMaterial}) { //Funktionen används när användaren klickar på ett material i tabellen.
+function MaterialTable({onSelectMaterial}) { //Funktionen används när användaren klickar på ett material i tabellen.
   const totals = getMaterialTotals();
  // Hämtar den summerade vikten för varje material från materialCalculations.
  // och returnerar en tabell med datan
@@ -33,4 +33,4 @@ function MyTable({onSelectMaterial}) { //Funktionen används när användaren kl
         </table>
     );
 }
-export default MyTable;
+export default MaterialTable;
