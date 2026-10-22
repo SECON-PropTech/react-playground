@@ -89,104 +89,235 @@
     },
   
 
-  "3.12" :
+
+  "3.12" : 
   {
     "name": "Slutbehandling av sålda produkter",
     "sold product": [
       {
         "id": 1,
+        "date": "2026-09-03",
         "name": "Ventilationsaggregat",
         "quantity": 2,
         "materials": [
-          { "name": "Stål", "kg": 40 },
-          { "name": "Aluminium", "kg": 10 },
-          { "name": "Plast", "kg": 5 }
+          { "name": "Metall", "kg": 40 },
+          { "name": "Plast", "kg": 5 },
+          { "name": "Elektronik", "kg": 2 },
+          { "name": "Textil", "kg": 1 }
+        ],
+        "life-cycle": 10,
+        "waste-managing": "Materialåtervinning",
+        "projects": [
+          "Lägenhet 1",
+          "Badhus 3",
+          "Ålderdomshem 1"
         ]
       },
       {
         "id": 2,
-        "name": "Värmepump luft-vatten",
-        "quantity": 3,
+        "date": "2026-09-04",
+        "name": "Reglerutrustning",
+        "quantity": 5,
         "materials": [
-          { "name": "Stål", "kg": 50 },
-          { "name": "Koppar", "kg": 12 },
-          { "name": "Aluminium", "kg": 8 },
-          { "name": "Plast", "kg": 4 }
+          { "name": "Metall", "kg": 3 },
+          { "name": "Plast", "kg": 2 },
+          { "name": "Elektronik", "kg": 1 }
+        ],
+        "life-cycle": 10,
+        "waste-managing": "Materialåtervinning",
+        "projects": [
+          "Kontorsfastighet 1",
+          "Lägenhet 2",
+          "Skola 1"
         ]
       },
       {
         "id": 3,
+        "date": "2026-09-07",
         "name": "Ventilationskanaler",
         "quantity": 10,
         "materials": [
-          { "name": "Galvaniserat stål", "kg": 4 }
+          { "name": "Metall", "kg": 4 },
+          { "name": "Plast", "kg": 0.5 },
+          { "name": "Gummi", "kg": 0.2 }
+        ],
+        "life-cycle": 30,
+        "waste-managing": "Materialåtervinning",
+        "projects": [
+          "Badhus 3",
+          "Skola 1",
+          "Kontorsfastighet 2"
         ]
       },
       {
         "id": 4,
-        "name": "Vattenburen radiator",
+        "date": "2026-09-10",
+        "name": "Radiatorer",
         "quantity": 8,
         "materials": [
-          { "name": "Stål", "kg": 15 },
-          { "name": "Plast", "kg": 1 }
+          { "name": "Metall", "kg": 15 },
+          { "name": "Plast", "kg": 1 },
+          { "name": "Gummi", "kg": 0.5 }
+        ],
+        "life-cycle": 25,
+        "waste-managing": "Materialåtervinning",
+        "projects": [
+          "Lägenhet 1",
+          "Ålderdomshem 1",
+          "Kontorsfastighet 1"
         ]
       },
       {
         "id": 5,
-        "name": "Frånluftsfläkt",
-        "quantity": 5,
+        "date": "2026-09-03",
+        "name": "Cirkulationspump",
+        "quantity": 6,
         "materials": [
-          { "name": "Stål", "kg": 6 },
-          { "name": "Aluminium", "kg": 3 },
-          { "name": "Plast", "kg": 2 }
+          { "name": "Metall", "kg": 4 },
+          { "name": "Plast", "kg": 1 }
+        ],
+        "life-cycle": 10,
+        "waste-managing": "Materialåtervinning",
+        "projects": [
+          "Ålderdomshem 1",
+          "Badhus 3",
+          "Flerbostadshus 1"
         ]
       },
       {
         "id": 6,
+        "date": "2026-09-03",
         "name": "Värmeväxlare",
         "quantity": 4,
         "materials": [
-          { "name": "Aluminium", "kg": 18 },
-          { "name": "Koppar", "kg": 10 },
-          { "name": "Stål", "kg": 4 }
+          { "name": "Metall", "kg": 18 },
+          { "name": "Plast", "kg": 1 }
+        ],
+        "life-cycle": 20,
+        "waste-managing": "Materialåtervinning",
+        "projects": [
+          "Badhus 3",
+          "Kontorsfastighet 2",
+          "Flerbostadshus 1"
         ]
       },
       {
         "id": 7,
-        "name": "Cirkulationspump",
-        "quantity": 6,
+        "date": "2026-10-03",
+        "name": "Mätutrustning",
+        "quantity": 4,
         "materials": [
-          { "name": "Gjutjärn", "kg": 4 },
-          { "name": "Rostfritt stål", "kg": 2 },
-          { "name": "Plast", "kg": 1 }
+          { "name": "Metall", "kg": 1 },
+          { "name": "Plast", "kg": 0.5 }
+        ],
+        "life-cycle": 8,
+        "waste-managing": "Återanvändning",
+        "projects": [
+          "Skola 1",
+          "Kontorsfastighet 1",
+          "Ålderdomshem 1"
         ]
       },
       {
         "id": 8,
-        "name": "Luftfilter för ventilationssystem",
+        "date": "2026-10-06",
+        "name": "Filter",
         "quantity": 20,
         "materials": [
-          { "name": "Plast", "kg": 0.5 },
-          { "name": "Syntetfiber", "kg": 0.8 },
-          { "name": "Stål", "kg": 0.2 }
+          { "name": "Plast", "kg": 0.5 }
+        ],
+        "life-cycle": 1,
+        "waste-managing": "Sortering och avfallshantering",
+        "projects": [
+          "Badhus 3",
+          "Skola 1",
+          "Kontorsfastighet 2"
         ]
       },
       {
         "id": 9,
+        "date": "2026-10-07",
         "name": "Expansionskärl",
         "quantity": 4,
         "materials": [
-          { "name": "Stål", "kg": 10 },
+          { "name": "Metall", "kg": 10 },
           { "name": "Gummi", "kg": 2 }
+        ],
+        "life-cycle": 20,
+        "waste-managing": "Materialåtervinning",
+        "projects": [
+          "Lägenhet 2",
+          "Kontorsfastighet 1",
+          "Flerbostadshus 1"
         ]
       },
       {
         "id": 10,
-        "name": "Isolerade kopparrör",
+        "date": "2026-10-09",
+        "name": "Temperatur- och flödesgivare",
         "quantity": 12,
         "materials": [
-          { "name": "Koppar", "kg": 2 },
-          { "name": "Stål", "kg": 0.5 }
+          { "name": "Metall", "kg": 0.3 },
+          { "name": "Plast", "kg": 0.2 }
+        ],
+        "life-cycle": 8,
+        "waste-managing": "Återanvändning och återvinning",
+        "projects": [
+          "Ålderdomshem 1",
+          "Flerbostadshus 1",
+          "Badhus 3"
+        ]
+      },
+      {
+        "id": 11,
+        "date": "2026-10-12",
+        "name": "Utrustning för driftövervakning",
+        "quantity": 3,
+        "materials": [
+          { "name": "Metall", "kg": 2 },
+          { "name": "Elektronik", "kg": 1.5 }
+        ],
+        "life-cycle": 10,
+        "waste-managing": "Reparation och återvinning",
+        "projects": [
+          "Kontorsfastighet 1",
+          "Skola 1",
+          "Flerbostadshus 1"
+        ]
+      },
+      {
+        "id": 12,
+        "date": "2026-10-13",
+        "name": "Utrustning för legionellabehandling",
+        "quantity": 2,
+        "materials": [
+          { "name": "Metall", "kg": 8 },
+          { "name": "Plast", "kg": 2 },
+          { "name": "Elektronik", "kg": 1 }
+        ],
+        "life-cycle": 10,
+        "waste-managing": "Återanvändning av fungerande utrustning och materialåtervinning",
+        "projects": [
+          "Ålderdomshem 1",
+          "Badhus 3",
+          "Flerbostadshus 1"
+        ]
+      },
+      {
+        "id": 13,
+        "date": "2026-10-16",
+        "name": "Märkningsmaterial",
+        "quantity": 15,
+        "materials": [
+          { "name": "Plast", "kg": 0.2 },
+          { "name": "Papper", "kg": 0.5 }
+        ],
+        "life-cycle": 5,
+        "waste-managing": "Pappersåtervinning",
+        "projects": [
+          "Lägenhet 1",
+          "Kontorsfastighet 1",
+          "Ålderdomshem 1"
         ]
       }
     ],
@@ -232,10 +363,5 @@
       "icon": "refresh-cw"
       }
       ]
-
-  }
-
-
-
-
+  }  
 }
