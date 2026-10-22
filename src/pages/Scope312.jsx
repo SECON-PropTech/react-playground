@@ -1,25 +1,12 @@
 import RandomFact from "../components/scope312/RandomFact";
-
+import ImportedDataTable from "../components/scope312/ImportedDataTable";
 function Scope312({ onSelect }) {
 return (
 <div>
-<h2>Scope 3.12</h2>
-<h3>Slutbehandling av sålda produkter</h3>
-<table className="table">
-  <thead>
-    <tr>
-      <th scope="col" className="product-column"></th>
-      <th scope="col">Avfall</th>
-      <th scope="col">Vikt per produkt</th>
-      <th scope="col">Antal</th>
-      <th scope="col">Uppdrag</th>
-      <th scope="col">Hantering</th>
-      <th scope="col">Livslängd</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+  <h2>Scope 3.12</h2>
+  <h3>Slutbehandling av sålda produkter</h3>
+  
+  <ImportedDataTable />
 
   <button
     type="button"

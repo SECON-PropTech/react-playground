@@ -1,5 +1,5 @@
 import PieChart from "./MyPieChart";
-import MyTable from "./MaterialTable";
+import MaterialTable from "./MaterialTable";
 import { getMaterialTotals } from "../../utils/materialCalculations";
 
 function MaterialOverview({ onSelectMaterial, onBack }) {
@@ -24,7 +24,7 @@ return (
   <div className="container text-center">
     <div className="row row-cols-1 row-cols-md-2">
       <div className="col">
-        <MyTable onSelectMaterial={onSelectMaterial} />
+        <MaterialTable onSelectMaterial={onSelectMaterial} />
       </div>
 
       <div className="col">
