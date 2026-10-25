@@ -6,6 +6,8 @@ import Scope312 from "./pages/Scope312";
 import MaterialDetails from "./components/scope312/MaterialDetails";
 import MaterialOverview from "./components/scope312/MaterialOverview";
 import TopTen from "./components/scope312/Topten";
+import Projects from "./components/scope312/Projects";
+import ProjectDetails from "./components/scope312/ProjectDetails";
 
 const pageComponents = {
   "scope-3.1": Scope31,
@@ -13,6 +15,8 @@ const pageComponents = {
   "scope-3.12": Scope312,
   "materials": MaterialOverview,
   "topTen": TopTen,
+  "projects" : Projects,
+  "projectDetail" : ProjectDetails,
 };
 
 function App() {
@@ -20,6 +24,7 @@ function App() {
   const [activePage, setActivePage] = useState(null);
   const Page = pageComponents[activePage];
   const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   
   function handlePageSelect(page) {
     setSelectedMaterial(null);
@@ -34,7 +39,18 @@ function App() {
           <MaterialDetails
             materialName={selectedMaterial}
             onBack={() => setSelectedMaterial(null)}/>)
-         : (Page && <Page onSelectMaterial={setSelectedMaterial} onSelect={handlePageSelect} onBack={() => handlePageSelect("scope-3.12")}/>)}
+
+            : activePage === "projectDetail" ? (
+          <ProjectDetails
+            projectName={selectedProject}
+            onBack={() => handlePageSelect("projects")}
+          />)
+          
+            : (Page && <Page 
+            onSelectMaterial={setSelectedMaterial}
+            onSelectProject={setSelectedProject} 
+            onSelect={handlePageSelect} 
+            onBack={() => handlePageSelect("scope-3.12")}/>)}
       </main>
     </div>
   );

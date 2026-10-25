@@ -81,3 +81,18 @@ export function getTopWasteProducts(limit = 10) {
     // Returnerar top 10.
     .slice(0, limit);
 }
+
+export function getAllProjects() {
+  const products = data["3.12"]["sold product"];
+  const projects = [
+  ...new Set(
+    products.flatMap((data) => data.projects)
+  ),
+];
+  return projects
+}
+
+export function getAllProducts() {
+  const products = data["3.12"]["sold product"];
+  return products;
+}

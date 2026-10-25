@@ -96,6 +96,14 @@ function Scope312({ onSelect }) {
         Visa top 10 största avfall
       </button>
 
+      <button
+        type="button"
+        className="btn btn-info mb-3"
+        onClick={() => onSelect("projects")}
+      >
+        Projekt
+      </button>
+
       <RandomFact />
     </div>
   );
