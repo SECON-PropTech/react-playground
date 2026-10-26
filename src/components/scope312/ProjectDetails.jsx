@@ -1,6 +1,8 @@
 import { getAllProducts } from "../../utils/materialCalculations";
 
 function ProjectDetails({ projectName, onBack }) {
+  // Den här funktionen aktiveras av Projects button och använder "project" som props.
+  // anänver sig av funktionen getAllProducts från utils och returnerar en sida med projektdetaljer
   const products = getAllProducts();
 
   const projectProducts = products.filter((product) =>

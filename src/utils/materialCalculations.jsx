@@ -1,4 +1,5 @@
 import data from "../data/mockSuppliers.json";
+//Allt i denna fil kommer bytas ut mot den riktiga datan!
 
 export function getMaterialTotals() {
 // Denna funktion hämtar och summerar den totala materialvikten per material.
@@ -83,6 +84,7 @@ export function getTopWasteProducts(limit = 10) {
 }
 
 export function getAllProjects() {
+  // Denna funktion hämtar alla projekt och sammanställer dem med hjälp av flatMap
   const products = data["3.12"]["sold product"];
   const projects = [
   ...new Set(

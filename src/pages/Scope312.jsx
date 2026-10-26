@@ -19,7 +19,7 @@ const months = [
 ];
 
 function Scope312({ onSelect }) {
-  const products = mockSuppliers["3.12"]["sold product"];
+  const products = mockSuppliers["3.12"]["sold product"]; ////products bytas ut mot riktig data
 
   const today = new Date();
   const currentYear = String(today.getFullYear());
@@ -44,7 +44,7 @@ function Scope312({ onSelect }) {
 
   if (filteredProducts.length > 0) {
     productContent = (
-      <ImportedDataTable products={filteredProducts} />
+      <ImportedDataTable products={filteredProducts} /> 
     );
   } else {
     productContent = (

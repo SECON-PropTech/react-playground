@@ -2,6 +2,8 @@ import { getAllProjects } from "../../utils/materialCalculations"
 import poolImg from "../../assets/badhus.jpg"
 
 function Projects( { onSelect, onSelectProject } ) {
+  // Denna funktion hämtar funktionen getAllProjects från utils som plockar ut alla projekt.
+  // OCh returnerar en sida med cards för varje projekt med titel, bild och knapp onSelect till projectDetail
   const projects = getAllProjects();
   return(
     <div className="container">

@@ -1,4 +1,5 @@
 function ImportedDataTable( {products} ) {
+  // Den här funktionen tar emot product från Scope312 och mappar ut all data i en tabell
   return (
     <div>
       <table className="table">
