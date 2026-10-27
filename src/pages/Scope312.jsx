@@ -26,6 +26,32 @@ function Scope312({ onSelect }) {
   const currentMonth = String(today.getMonth() + 1).padStart(2, "0"); //För att formatera månaden rätt
 
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+  
+  const [productInclusion, setProductInclusion] = useState(() =>
+  Object.fromEntries(
+    products.map((product) => {
+      const status = product["billing-status"]
+        ?.trim()
+        .toLowerCase();
+
+      const isNonBillable = [
+        "ej faktureringsbar",
+        "ej faktureringsbara",
+      ].includes(status);
+
+      return [product.id, isNonBillable ? null : true];
+    })
+  )
+);
+
+  function toggleProductInclusion(productId) {
+    // TODO: När backend finns, skicka productId och nytt värde
+    // till backend så att användarens val sparas.
+    setProductInclusion((previous) => ({
+      ...previous,
+      [productId]: !previous[productId],
+    }));
+  }
 
   const filteredProducts = products.filter((product) => {
     if (!product.date) return false;
@@ -44,7 +70,11 @@ function Scope312({ onSelect }) {
 
   if (filteredProducts.length > 0) {
     productContent = (
-      <ImportedDataTable products={filteredProducts} /> 
+      <ImportedDataTable   
+      products={filteredProducts}
+      productInclusion={productInclusion}
+      onToggleInclusion={toggleProductInclusion}
+      /> 
     );
   } else {
     productContent = (
