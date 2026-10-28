@@ -41,7 +41,7 @@ function ImportedDataTable( {products, productInclusion, onToggleInclusion, onEd
     }));
   }
 
-  function saveEditing() {
+  async function saveEditing() {
     const updatedProduct = {
       ...draftProduct,
       quantity: Number(draftProduct.quantity),
@@ -55,10 +55,14 @@ function ImportedDataTable( {products, productInclusion, onToggleInclusion, onEd
           : Number(draftProduct["life-cycle"]),
     };
 
-    onEditProduct(editingProductId, updatedProduct);
+    try {
+      await onEditProduct(editingProductId, updatedProduct);
 
-    setEditingProductId(null);
-    setDraftProduct(null);
+      setEditingProductId(null);
+      setDraftProduct(null);
+    } catch (error) {
+      console.error("Kunde inte spara produkten:", error);
+    }
   }
 
   function cancelEditing() {
@@ -243,13 +247,33 @@ function ImportedDataTable( {products, productInclusion, onToggleInclusion, onEd
                 </td>
 
                 <td>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={() => startEditing(product)}
-                  >
-                    Redigera
-                  </button>
+                  {isEditing ? (
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn-success btn-sm me-2"
+                        onClick={saveEditing}
+                      >
+                        Spara
+                      </button>
+
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-sm"
+                        onClick={cancelEditing}
+                      >
+                        Avbryt
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => startEditing(product)}
+                    >
+                      Redigera
+                    </button>
+                  )}
                 </td>
               </tr>
             );
