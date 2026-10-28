@@ -1,8 +1,72 @@
-function ImportedDataTable( {products, productInclusion, onToggleInclusion,
+import { useState } from "react";
+
+function ImportedDataTable( {products, productInclusion, onToggleInclusion, onEditProduct
   // Den här funktionen tar emot product från Scope312 och mappar ut all data i en tabell
   // productInclusion ifall produkten ska inkluderas och onToggleInclusion ifall användaren vill ändra status
-
 }){
+  const [editingProductId, setEditingProductId] = useState(null); // editingProductId anger vilken rad som redigeras.
+  const [draftProduct, setDraftProduct] = useState(null); // draftProduct innehåller ändringar som inte sparats än.
+  function startEditing(product) {
+    setEditingProductId(product.id);
+
+    setDraftProduct({
+      ...product,
+      materials: product.materials.map((material) => ({ ...material })),
+      projects: [...product.projects],
+    });
+  }
+
+  function handleFieldChange(field, value) {
+    setDraftProduct((previous) => ({
+      ...previous,
+      [field]: value,
+    }));
+  }
+
+  function handleMaterialChange(index, field, value) {
+    setDraftProduct((previous) => ({
+      ...previous,
+      materials: previous.materials.map((material, i) =>
+        i === index ? { ...material, [field]: value } : material
+      ),
+    }));
+  }
+
+  function handleProjectChange(index, value) {
+    setDraftProduct((previous) => ({
+      ...previous,
+      projects: previous.projects.map((project, i) =>
+        i === index ? value : project
+      ),
+    }));
+  }
+
+  function saveEditing() {
+    const updatedProduct = {
+      ...draftProduct,
+      quantity: Number(draftProduct.quantity),
+      materials: draftProduct.materials.map((material) => ({
+        ...material,
+        kg: Number(material.kg),
+      })),
+      "life-cycle":
+        draftProduct["life-cycle"] === ""
+          ? undefined
+          : Number(draftProduct["life-cycle"]),
+    };
+
+    onEditProduct(editingProductId, updatedProduct);
+
+    setEditingProductId(null);
+    setDraftProduct(null);
+  }
+
+  function cancelEditing() {
+    setEditingProductId(null);
+    setDraftProduct(null);
+  }
+
+
   return (
     <div className="table-responsive">
       <table className="table">
@@ -38,33 +102,67 @@ function ImportedDataTable( {products, productInclusion, onToggleInclusion,
 
             const isReady = !isNonBillable || inclusion !== null &&
               inclusion !== undefined;
+            
+            const isEditing = editingProductId === product.id;
 
             return (
               <tr key={product.id}>
+      
                 <td>{product.name}</td>
-
-                <td>
-                  {product.materials.map((material) => (
-                    <div key={material.name}>
-                      {material.name}
-                    </div>
-                  ))}
+               
+                <td> 
+                  {isEditing
+                    ? draftProduct.materials.map((material, index) => (
+                        <div key={index} className="mb-2">
+                          <input
+                            type="text"
+                            className="form-control form-control-sm"
+                            value={material.name}
+                            onChange={(e) =>
+                              handleMaterialChange(index, "name", e.target.value)
+                            }
+                          />
+                        </div>
+                      ))
+                    : product.materials.map((material, index) => (
+                        <div key={index}>
+                          {material.name}
+                        </div>
+                      ))}
                 </td>
 
                 <td>
-                  {product.materials.map((material) => (
-                    <div
-                      key={material.name}
-                      title={
-                        product.measured === true
-                          ? "Uppmätt vikt"
-                          : "Uppskattad vikt"
-                      }
-                      style={{ cursor: "help" }}
-                    >
-                      {material.kg} kg
-                    </div>
-                  ))}
+                  {isEditing
+                    ? draftProduct.materials.map((material, index) => (
+                        <div key={index} className="mb-2">
+                          <div className="input-group input-group-sm">
+                            <input
+                              type="number"
+                              min="0"
+                              step="any"
+                              className="form-control"
+                              value={material.kg}
+                              onChange={(e) =>
+                                handleMaterialChange(index, "kg", e.target.value)
+                              }
+                            />
+                            <span className="input-group-text">kg</span>
+                          </div>
+                        </div>
+                      ))
+                    : product.materials.map((material, index) => (
+                        <div
+                          key={index}
+                          title={
+                            product.measured === true
+                              ? "Uppmätt vikt"
+                              : "Uppskattad vikt"
+                          }
+                          style={{ cursor: "help" }}
+                        >
+                          {material.kg} kg
+                        </div>
+                      ))}
                 </td>
 
                 <td>{product.quantity}</td>
@@ -75,9 +173,42 @@ function ImportedDataTable( {products, productInclusion, onToggleInclusion,
                   ))}
                 </td>
 
-                <td>{product["waste-managing"]}</td>
+                <td>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      className="form-control form-control-sm"
+                      value={draftProduct["waste-managing"] ?? ""}
+                      onChange={(e) =>
+                        handleFieldChange("waste-managing", e.target.value)
+                      }
+                    />
+                  ) : (
+                    product["waste-managing"]
+                  )}
+                </td>
 
-                <td>{product["life-cycle"]} år</td>
+                <td>
+                  {isEditing ? (
+                    <div className="input-group input-group-sm">
+                      <input
+                        type="number"
+                        min="0"
+                        step="any"
+                        className="form-control"
+                        value={draftProduct["life-cycle"] ?? ""}
+                        onChange={(e) =>
+                          handleFieldChange("life-cycle", e.target.value)
+                        }
+                      />
+                      <span className="input-group-text">år</span>
+                    </div>
+                  ) : (
+                    <>
+                      {product["life-cycle"]} år
+                    </>
+                  )}
+                </td>
 
                 <td>
                   {isNonBillable ? (
@@ -109,6 +240,16 @@ function ImportedDataTable( {products, productInclusion, onToggleInclusion,
                       Ej faktureringsbar
                     </span>
                   )}
+                </td>
+
+                <td>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={() => startEditing(product)}
+                  >
+                    Redigera
+                  </button>
                 </td>
               </tr>
             );

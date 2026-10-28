@@ -21,7 +21,9 @@ const months = [
 function Scope312({ onSelect }) {
   // Hämtar produkterna som tillhör Scope 3.12.
   // TODO: Ersätt mockdata med riktig data från backend/API.
-  const products = mockSuppliers["3.12"]["sold product"]; ////products bytas ut mot riktig data
+  const [products, setProducts] = useState(  //products bytas ut mot riktig data
+    () => mockSuppliers["3.12"]["sold product"]
+  );
 
   //Hämtar dagens datum och hanterar vilken period användaren har valt att se
   const today = new Date();
@@ -80,6 +82,7 @@ function Scope312({ onSelect }) {
       products={filteredProducts}
       productInclusion={productInclusion}
       onToggleInclusion={toggleProductInclusion}
+      onEditProduct={editProductRow}
       /> 
     );
   } else {
@@ -88,6 +91,18 @@ function Scope312({ onSelect }) {
     );
   }
 
+
+  // 3. REDIGERING AV PRODUKTER
+  // Uppdaterar endast produkten med det valda ID:t.
+  function editProductRow(productId, updatedProduct) {
+    setProducts((previousProducts) =>
+      previousProducts.map((product) =>
+        product.id === productId
+          ? { ...product, ...updatedProduct, id: product.id }
+          : product
+      )
+    );
+  }
 
 
   return (
