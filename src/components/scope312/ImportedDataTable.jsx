@@ -53,7 +53,15 @@ function ImportedDataTable( {products, productInclusion, onToggleInclusion,
 
                 <td>
                   {product.materials.map((material) => (
-                    <div key={material.name}>
+                    <div
+                      key={material.name}
+                      title={
+                        product.measured === true
+                          ? "Uppmätt vikt"
+                          : "Uppskattad vikt"
+                      }
+                      style={{ cursor: "help" }}
+                    >
                       {material.kg} kg
                     </div>
                   ))}

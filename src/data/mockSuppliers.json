@@ -105,7 +105,7 @@
           { "name": "Elektronik", "kg": 2 },
           { "name": "Textil", "kg": 1 }
         ],
-        "life-cycle": 10,
+        "measured": true,
         "waste-managing": "Materialåtervinning",
         "projects": [
           "Lägenhet 1",
@@ -123,6 +123,7 @@
           { "name": "Plast", "kg": 2 },
           { "name": "Elektronik", "kg": 1 }
         ],
+        "measured": true,
         "life-cycle": 10,
         "waste-managing": "Materialåtervinning",
         "projects": [
@@ -141,6 +142,7 @@
           { "name": "Plast", "kg": 0.5 },
           { "name": "Gummi", "kg": 0.2 }
         ],
+        "measured": false,
         "life-cycle": 30,
         "waste-managing": "Materialåtervinning",
         "projects": [
@@ -161,6 +163,7 @@
           { "name": "Plast", "kg": 1 },
           { "name": "Gummi", "kg": 0.5 }
         ],
+        "measured": false,
         "life-cycle": 25,
         "waste-managing": "Materialåtervinning",
         "projects": [
@@ -180,6 +183,7 @@
           { "name": "Metall", "kg": 4 },
           { "name": "Plast", "kg": 1 }
         ],
+        "measured": true,
         "life-cycle": 10,
         "waste-managing": "Materialåtervinning",
         "projects": [
@@ -199,6 +203,7 @@
           { "name": "Metall", "kg": 18 },
           { "name": "Plast", "kg": 1 }
         ],
+        "measured": true,
         "life-cycle": 20,
         "waste-managing": "Materialåtervinning",
         "projects": [
@@ -218,6 +223,7 @@
           { "name": "Metall", "kg": 1 },
           { "name": "Plast", "kg": 0.5 }
         ],
+        "measured": true,
         "life-cycle": 8,
         "waste-managing": "Återanvändning",
         "projects": [
@@ -236,6 +242,7 @@
         "materials": [
           { "name": "Plast", "kg": 0.5 }
         ],
+        "measured": false,
         "life-cycle": 1,
         "waste-managing": "Sortering och avfallshantering",
         "projects": [
@@ -255,6 +262,7 @@
           { "name": "Metall", "kg": 10 },
           { "name": "Gummi", "kg": 2 }
         ],
+        "measured": false,
         "life-cycle": 20,
         "waste-managing": "Materialåtervinning",
         "projects": [
@@ -274,6 +282,7 @@
           { "name": "Metall", "kg": 0.3 },
           { "name": "Plast", "kg": 0.2 }
         ],
+        "measured": true,
         "life-cycle": 8,
         "waste-managing": "Återanvändning och återvinning",
         "projects": [
@@ -293,6 +302,7 @@
           { "name": "Metall", "kg": 2 },
           { "name": "Elektronik", "kg": 1.5 }
         ],
+        "measured": true,
         "life-cycle": 10,
         "waste-managing": "Reparation och återvinning",
         "projects": [
@@ -313,6 +323,7 @@
           { "name": "Plast", "kg": 2 },
           { "name": "Elektronik", "kg": 1 }
         ],
+        "measured": true,
         "life-cycle": 10,
         "waste-managing": "Återanvändning av fungerande utrustning och materialåtervinning",
         "projects": [
@@ -332,6 +343,7 @@
           { "name": "Plast", "kg": 0.2 },
           { "name": "Papper", "kg": 0.5 }
         ],
+        "measured": true,
         "life-cycle": 5,
         "waste-managing": "Pappersåtervinning",
         "projects": [

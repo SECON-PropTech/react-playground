@@ -19,14 +19,19 @@ const months = [
 ];
 
 function Scope312({ onSelect }) {
+  // Hämtar produkterna som tillhör Scope 3.12.
+  // TODO: Ersätt mockdata med riktig data från backend/API.
   const products = mockSuppliers["3.12"]["sold product"]; ////products bytas ut mot riktig data
 
+  //Hämtar dagens datum och hanterar vilken period användaren har valt att se
   const today = new Date();
   const currentYear = String(today.getFullYear());
   const currentMonth = String(today.getMonth() + 1).padStart(2, "0"); //För att formatera månaden rätt
-
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+ 
   
+  //Funktioner som ändrar vilka produkter som inkluderas.
+  // TODO: När backend finns, skicka productId och nytt värde till backend så att användarens val sparas.
   const [productInclusion, setProductInclusion] = useState(() =>
   Object.fromEntries(
     products.map((product) => {
@@ -39,20 +44,21 @@ function Scope312({ onSelect }) {
         "ej faktureringsbara",
       ].includes(status);
 
-      return [product.id, isNonBillable ? null : true];
+      return [product.id, isNonBillable ? null : true]; // true=produkten är inkluderad, false=produkten är exkluderad, null  = produkten är inte faktureringsbar och ger användare ett val
     })
   )
 );
 
   function toggleProductInclusion(productId) {
-    // TODO: När backend finns, skicka productId och nytt värde
-    // till backend så att användarens val sparas.
     setProductInclusion((previous) => ({
       ...previous,
       [productId]: !previous[productId],
     }));
   }
 
+
+  //FILTRERING AV PRODUKTER
+  //Visar endast produkter som har ett datum inom valt år och vald månad.
   const filteredProducts = products.filter((product) => {
     if (!product.date) return false;
 
@@ -81,6 +87,8 @@ function Scope312({ onSelect }) {
       <p>Inga produkter hittades för den valda perioden.</p>
     );
   }
+
+
 
   return (
     <div>
